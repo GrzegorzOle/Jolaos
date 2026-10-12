@@ -10,8 +10,8 @@ if __package__ in (None, ""):  # uruchomienie jako skrypt: python jolaos/__main_
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
     __package__ = "jolaos"  # noqa: A001
 
-from . import __version__, i18n  # noqa: E402
-from .journal import Journal  # noqa: E402
+from . import __version__, i18n, winapi  # noqa: E402
+from .journal import Journal, append_log  # noqa: E402
 
 
 def _cli_audit() -> int:
@@ -61,6 +61,14 @@ def main(argv: list[str] | None = None) -> int:
         if stream and hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8", errors="replace")
 
+    gui_mode = not (args.audit or args.guard or args.remove_guard)
+    if gui_mode and not winapi.is_admin():
+        # Jedyne pytanie o uprawnienia zadaje system (okno UAC). Odmowa kończy program
+        # po cichu. Nic nie dotykamy przed podniesieniem uprawnień, żeby nie było
+        # wcześniejszych komunikatów o błędach.
+        winapi.relaunch_as_admin()
+        return 0
+
     journal = Journal()
     i18n.set_language(args.lang or journal.get_config("language", i18n.DEFAULT_LANGUAGE))
 
@@ -73,7 +81,11 @@ def main(argv: list[str] | None = None) -> int:
 
     from .gui import run_gui
 
-    return run_gui(journal)
+    try:
+        return run_gui(journal)
+    except Exception as exc:  # noqa: BLE001 - zamiast okna błędu z bootloadera: wpis w logu
+        append_log(f"gui crashed: {exc!r}")
+        return 1
 
 
 if __name__ == "__main__":

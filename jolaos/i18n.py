@@ -30,15 +30,19 @@ _PL = {
     "tab.restore": "Przywrócenie",
     "audit.intro": (
         "Tu niczego nie zmieniamy. Program tylko sprawdza, w których miejscach Copilot "
-        "jest obecny na tym komputerze. Od tego warto zacząć."
+        "jest obecny na tym komputerze. Od tego warto zacząć. Napis po prawej opisuje "
+        "stan w systemie: zielony oznacza, że jest tak, jak chcemy, czerwony, że hydra "
+        "ma tu głowę."
     ),
     "audit.run": "Sprawdź teraz",
     "audit.running": "Sprawdzanie…",
     "audit.guard_report": "Ostatni raport strażnika",
     "audit.no_report": "Strażnik nie zostawił jeszcze żadnego raportu.",
     "disable.intro": (
-        "Zaznacz, które głowy hydry mają zostać ścięte. Każda zmiana jest zapisywana "
-        "w dzienniku, więc da się ją cofnąć w zakładce Przywrócenie."
+        "Przełącznik po lewej mówi, co ma zostać ścięte po kliknięciu „Zastosuj”. Napis "
+        "po prawej pokazuje, jak jest teraz w systemie: zielony oznacza stan pożądany, "
+        "czerwony, że głowa wciąż jest. Każda zmiana trafia do dziennika i da się ją "
+        "cofnąć w zakładce Przywrócenie."
     ),
     "disable.run": "Zastosuj zaznaczone",
     "disable.running": "Wprowadzanie zmian…",
@@ -60,13 +64,13 @@ _PL = {
     "restore.nothing": "Nie zaznaczono żadnej opcji.",
     "restore.applied_on": "Zmieniono: {when}",
     # Statusy
-    "status.unknown": "Nie sprawdzono",
-    "status.present": "Obecny",
-    "status.absent": "Wyłączony",
-    "status.partial": "Częściowo",
-    "status.error": "Błąd sprawdzania",
-    "status.guard_missing": "Nie założony",
-    "status.guard_active": "Czuwa",
+    "status.unknown": "Jeszcze nie sprawdzono",
+    "status.present": "Obecny w systemie",
+    "status.absent": "Wyłączony w systemie",
+    "status.partial": "Częściowo wyłączony",
+    "status.error": "Nie udało się sprawdzić",
+    "status.guard_missing": "Strażnik nie działa",
+    "status.guard_active": "Strażnik czuwa",
     "status.ready": "Gotowy.",
     "status.need_restart": "Niektóre zmiany zadziałają dopiero po ponownym uruchomieniu komputera.",
     "status.need_relogin": "Niektóre zmiany zobaczysz po ponownym zalogowaniu lub restarcie Eksploratora.",
@@ -74,12 +78,6 @@ _PL = {
     "status.restart_explorer": "Uruchom ponownie Eksplorator Windows",
     "status.explorer_restarted": "Eksplorator uruchomiony ponownie.",
     # Komunikaty
-    "msg.admin_title": "Potrzebne uprawnienia administratora",
-    "msg.admin": (
-        "Jolaos zmienia ustawienia systemowe, więc musi działać jako administrator. "
-        "Uruchomić ponownie z podniesionymi uprawnieniami?"
-    ),
-    "msg.admin_failed": "Nie udało się uruchomić programu jako administrator.",
     "msg.busy": "Poczekaj, aż bieżąca operacja się zakończy.",
     "log.start_audit": "Rozpoczynam audyt.",
     "log.start_apply": "Rozpoczynam wprowadzanie zmian.",
@@ -137,15 +135,19 @@ _EN = {
     "tab.restore": "Restore",
     "audit.intro": (
         "Nothing is changed here. The program only checks where Copilot is present on "
-        "this computer. This is the place to start."
+        "this computer. This is the place to start. The label on the right describes the "
+        "current state of the system: green means it is the way we want it, red means "
+        "the Hydra still has a head here."
     ),
     "audit.run": "Check now",
     "audit.running": "Checking…",
     "audit.guard_report": "Latest guard report",
     "audit.no_report": "The guard has not left a report yet.",
     "disable.intro": (
-        "Select which heads of the Hydra should be cut off. Every change is written to a "
-        "journal, so it can be undone on the Restore tab."
+        "The switch on the left says what will be cut off when you click Apply. The label "
+        "on the right shows the current state of the system: green is the desired state, "
+        "red means the head is still there. Every change is written to a journal and can "
+        "be undone on the Restore tab."
     ),
     "disable.run": "Apply selected",
     "disable.running": "Applying changes…",
@@ -166,25 +168,19 @@ _EN = {
     "restore.empty": "The journal is empty. Jolaos has not changed anything on this computer yet.",
     "restore.nothing": "No option selected.",
     "restore.applied_on": "Changed: {when}",
-    "status.unknown": "Not checked",
-    "status.present": "Present",
-    "status.absent": "Disabled",
-    "status.partial": "Partially",
-    "status.error": "Check failed",
-    "status.guard_missing": "Not set up",
-    "status.guard_active": "Watching",
+    "status.unknown": "Not checked yet",
+    "status.present": "Present on this system",
+    "status.absent": "Disabled on this system",
+    "status.partial": "Partially disabled",
+    "status.error": "Could not check",
+    "status.guard_missing": "Guard not running",
+    "status.guard_active": "Guard is watching",
     "status.ready": "Ready.",
     "status.need_restart": "Some changes take effect after a restart of the computer.",
     "status.need_relogin": "Some changes appear after signing in again or restarting Explorer.",
     "status.done": "Finished.",
     "status.restart_explorer": "Restart Windows Explorer",
     "status.explorer_restarted": "Explorer restarted.",
-    "msg.admin_title": "Administrator rights required",
-    "msg.admin": (
-        "Jolaos changes system settings, so it has to run as administrator. "
-        "Restart with elevated rights?"
-    ),
-    "msg.admin_failed": "Could not restart the program as administrator.",
     "msg.busy": "Please wait for the current operation to finish.",
     "log.start_audit": "Starting audit.",
     "log.start_apply": "Starting to apply changes.",

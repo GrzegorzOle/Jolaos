@@ -239,7 +239,7 @@ class HeadRow(tk.Frame):
         self.badge.grid(row=0, column=2, rowspan=3, sticky="ne", padx=(14, 0))
         self.dot = tk.Canvas(self.badge, width=12, height=12, highlightthickness=0, bg=C["card"])
         self.dot.pack(side="left", padx=(0, 6), pady=3)
-        self.status = tk.Label(self.badge, font=SMALL_FONT, bg=C["card"], width=14, anchor="w")
+        self.status = tk.Label(self.badge, font=SMALL_FONT, bg=C["card"], width=22, anchor="w")
         self.status.pack(side="left")
 
         self.detail = tk.Label(self, text="", font=MONO_FONT, fg=C["muted"], bg=C["card"], justify="left", anchor="w")
@@ -247,7 +247,7 @@ class HeadRow(tk.Frame):
         self.bind("<Configure>", self._on_resize)
 
     def _on_resize(self, event) -> None:
-        width = max(event.width - 270, 200)
+        width = max(event.width - 320, 200)
         self.desc.configure(wraplength=width)
         self.notes.configure(wraplength=width)
         self.detail.configure(wraplength=width)
@@ -281,7 +281,7 @@ class SettingRow(tk.Frame):
                              justify="left", anchor="w", wraplength=520)
         self.desc.grid(row=1, column=1, sticky="we", pady=(2, 0))
         self.var.trace_add("write", lambda *_: command(self.var.get()))
-        self.bind("<Configure>", lambda e: self.desc.configure(wraplength=max(e.width - 270, 200)))
+        self.bind("<Configure>", lambda e: self.desc.configure(wraplength=max(e.width - 320, 200)))
 
 
 # ---------------------------------------------------------------------------
@@ -672,14 +672,5 @@ class App:
 
 
 def run_gui(journal: Journal) -> int:
-    if not winapi.is_admin():
-        root = tk.Tk()
-        root.withdraw()
-        if messagebox.askyesno(t("msg.admin_title"), t("msg.admin")):
-            if winapi.relaunch_as_admin():
-                root.destroy()
-                return 0
-            messagebox.showerror(t("msg.admin_title"), t("msg.admin_failed"))
-        root.destroy()
     App(journal).run()
     return 0
