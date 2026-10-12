@@ -6,7 +6,7 @@ Jolaos wyłącza Copilota w Windows 11 Home i pilnuje, żeby nie wrócił po kol
 
 ## Skąd nazwa
 
-Pod jednym z moich wpisów na LinkedIn napisał:
+Pod jednym z moich wpisów na LinkedIn:
 
 > „Odpinanie Copilot w środowiskach zarządzanych również nie jest ani proste, ani w pełni możliwe dzisiaj. Na razie wyskakuje on wszystkim niemal wszędzie niczym mityczna hydra.”
 
