@@ -6,7 +6,7 @@ Jolaos wyłącza Copilota w Windows 11 Home i pilnuje, żeby nie wrócił po kol
 
 ## Skąd nazwa
 
-Pod jednym z moich wpisów na LinkedIn Szymon Szcześniak (CodeTwo) napisał:
+Pod jednym z moich wpisów na LinkedIn napisał:
 
 > „Odpinanie Copilot w środowiskach zarządzanych również nie jest ani proste, ani w pełni możliwe dzisiaj. Na razie wyskakuje on wszystkim niemal wszędzie niczym mityczna hydra.”
 
@@ -117,7 +117,3 @@ Herakles zanurzył strzały we krwi hydry. Były przez to zabójcze, a po latach
 Nie dopisuj do Jolaosa niczego „przy okazji”. Każdy wyłączony składnik, którego działania nie rozumiesz, wróci kiedyś w postaci zepsutej aktualizacji. Jedna hydra, jedna pochodnia.
 
 Nowa głowa to jeden wpis w `jolaos/heads.py` plus tytuł, opis i opis przywracania w `jolaos/i18n.py`, po polsku i po angielsku. Opis ma być zrozumiały dla osoby, która nigdy nie otwierała rejestru.
-
-## Podziękowania
-
-Szymonowi Szcześniakowi za hydrę. Nazwa jest jego zasługą, błędy moją.
