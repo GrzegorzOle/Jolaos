@@ -43,7 +43,7 @@ Jolaos jest zwykłym programem z oknem, nie skryptem. Nie trzeba znać PowerShel
 
 3. **Przywrócenie.** Lista tego, co Jolaos faktycznie zmienił. Każdą zmianę da się cofnąć osobno. Program pamięta stan sprzed zmiany i odtwarza dokładnie jego.
 
-Program jest domyślnie po polsku. W menu „Język” można przełączyć na angielski. Przełącznik w prawym górnym rogu zmienia motyw na ciemny, a menu „Pomoc” prowadzi do dziennika zmian i do treści licencji.
+Program jest domyślnie po polsku. W menu „Język” można przełączyć na angielski. Przełącznik w prawym górnym rogu zmienia motyw na ciemny, a menu „Pomoc” prowadzi do dziennika zmian, do treści licencji i do sprawdzania aktualizacji. Przy starcie program pyta GitHub o najnowsze wydanie i, jeśli jest nowsze, pokazuje pasek z przyciskiem „Pobierz”. To jedyne połączenie z internetem i można je wyłączyć w menu „Pomoc”.
 
 ## Co robi
 

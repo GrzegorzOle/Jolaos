@@ -33,7 +33,7 @@ Dokument ma dwie części. Pierwsza jest dla osoby, która chce zainstalować Jo
 
 - Dziennik zmian, dziennik zdarzeń i raporty strażnika leżą w `C:\ProgramData\Jolaos`. Menu „Pomoc” ma skrót do tego folderu.
 - Jeśli włączysz strażnika, w Harmonogramie zadań pojawi się zadanie `Jolaos`. Uruchamia się minutę po zalogowaniu, sprawdza, czy ścięte głowy nie odrosły, i w razie potrzeby ścina je ponownie. Wynik każdego sprawdzenia widać w zakładce Audyt. Gdy coś odrosło, strażnik pokazuje też zwykłe powiadomienie Windows; gdy wszystko jest w porządku, milczy. Powiadomienia wyłącza przełącznik na dole zakładki Wyłączenie.
-- Program nie łączy się z internetem. Jedyny wyjątek to przywracanie aplikacji ze sklepu, które otwiera Microsoft Store.
+- Program łączy się z internetem tylko w jednym celu: przy uruchomieniu pyta GitHub o numer najnowszego wydania. Nie wysyła nic poza numerem swojej wersji w nagłówku zapytania. Gdy jest nowsza wersja, pod nagłówkiem okna pojawia się pasek z przyciskiem „Pobierz”, który otwiera instalator w przeglądarce. Sprawdzanie wyłączysz w menu „Pomoc”. Przywracanie aplikacji ze sklepu otwiera Microsoft Store.
 
 ### Cofanie zmian
 
@@ -126,4 +126,4 @@ Opis wydania pisz po polsku, w punktach: co doszło, co się zmieniło, co trzeb
 
 ### Aktualizacja u użytkowników
 
-Nowy instalator uruchomiony na komputerze ze starszą wersją nadpisuje pliki w miejscu. Dziennik w `ProgramData` zostaje, więc zakładka Przywrócenie nadal działa. Zadanie strażnika wskazuje na stałą ścieżkę `C:\Program Files\Jolaos\Jolaos.exe`, więc po aktualizacji uruchamia już nową wersję.
+Program sam sprawdza przy starcie, czy na GitHubie jest nowsze wydanie, i pokazuje pasek z przyciskiem „Pobierz”. Nie instaluje niczego sam; użytkownik pobiera instalator i uruchamia go. Nowy instalator uruchomiony na komputerze ze starszą wersją nadpisuje pliki w miejscu. Dziennik w `ProgramData` zostaje, więc zakładka Przywrócenie nadal działa. Zadanie strażnika wskazuje na stałą ścieżkę `C:\Program Files\Jolaos\Jolaos.exe`, więc po aktualizacji uruchamia już nową wersję.

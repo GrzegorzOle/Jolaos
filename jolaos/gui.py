@@ -12,7 +12,7 @@ from tkinter import messagebox, ttk
 from tkinter.scrolledtext import ScrolledText
 from typing import Callable
 
-from . import __version__, i18n, notify, winapi
+from . import __version__, i18n, notify, update, winapi
 from .guard import last_report
 from .heads import GUARD_ID, AuditResult, Head, HeadError, Status, build_heads
 from .i18n import t
@@ -297,6 +297,8 @@ class App:
         self.events: queue.Queue[Callable[[], None]] = queue.Queue()
         self.theme = journal.get_config("theme", "light")
         set_theme(self.theme)
+        self.update_info: update.UpdateInfo | None = None
+        self.update_banner: tk.Frame | None = None
 
         self.root = tk.Tk()
         self.root.title(t("app.title"))
@@ -315,6 +317,8 @@ class App:
         self.build_ui()
         self.root.after(100, self._pump)
         self.root.after(300, self.start_audit)
+        if self.journal.get_config(update.CONFIG_KEY, True):
+            self.root.after(1500, lambda: self.start_update_check(manual=False))
 
     # Budowa interfejsu --------------------------------------------------
 
@@ -360,6 +364,9 @@ class App:
         tk.Label(titles, text=t("app.title"), font=HEADER_FONT, bg=C["page"], fg=C["text"]).pack(anchor="w")
         tk.Label(titles, text=t("app.subtitle"), font=SMALL_FONT, fg=C["muted"], bg=C["page"]).pack(anchor="w")
         ThemeToggle(header, dark=self.theme == "dark", command=self.change_theme).pack(side="right", anchor="n", pady=4)
+        self.update_banner = None
+        if self.update_info:
+            self.show_update_banner(self.update_info)
 
         bottom = tk.Frame(self.main, bg=C["page"], padx=12, pady=8)
         bottom.pack(side="bottom", fill="x")
@@ -395,6 +402,11 @@ class App:
         help_menu = tk.Menu(menubar, tearoff=0)
         help_menu.add_command(label=t("menu.open_journal"), command=lambda: winapi.open_in_shell(str(data_dir())))
         help_menu.add_command(label=t("menu.license"), command=lambda: winapi.open_in_shell(LICENSE_URL))
+        help_menu.add_separator()
+        help_menu.add_command(label=t("update.check_now"), command=lambda: self.start_update_check(manual=True))
+        self.auto_update_var = tk.BooleanVar(value=bool(self.journal.get_config(update.CONFIG_KEY, True)))
+        help_menu.add_checkbutton(label=t("update.auto"), variable=self.auto_update_var,
+                                  command=lambda: self.journal.set_config(update.CONFIG_KEY, self.auto_update_var.get()))
         help_menu.add_separator()
         help_menu.add_command(label=t("menu.about"), command=self.show_about)
         menubar.add_cascade(label=t("menu.help"), menu=help_menu)
@@ -503,6 +515,52 @@ class App:
         set_theme(self.theme)
         self.journal.set_config("theme", self.theme)
         self.build_ui()
+
+    # Aktualizacje --------------------------------------------------------
+
+    def start_update_check(self, manual: bool) -> None:
+        def worker() -> None:
+            latest = update.fetch_latest()
+            self.post(lambda: self._update_checked(latest, manual))
+
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _update_checked(self, latest: update.UpdateInfo | None, manual: bool) -> None:
+        if latest and update.is_newer(latest.version):
+            self.update_info = latest
+            self.show_update_banner(latest)
+            if manual and messagebox.askyesno(
+                t("update.title"), t("update.ask_open", version=latest.version, current=__version__), parent=self.root
+            ):
+                winapi.open_in_shell(latest.download_url)
+            return
+        if not manual:
+            return
+        if latest is None:
+            messagebox.showwarning(t("update.title"), t("update.error"), parent=self.root)
+        else:
+            messagebox.showinfo(t("update.title"), t("update.none", current=__version__), parent=self.root)
+
+    def show_update_banner(self, info: update.UpdateInfo) -> None:
+        if self.update_banner is not None:
+            return
+        banner = tk.Frame(self.main, bg=C["accent"], padx=18, pady=8)
+        banner.pack(fill="x", after=self.main.winfo_children()[0])
+        tk.Label(banner, text=t("update.available", version=info.version, current=__version__),
+                 font=BODY_FONT, bg=C["accent"], fg=C["accent_fg"], anchor="w").pack(side="left")
+        tk.Button(banner, text=t("update.dismiss"), font=SMALL_FONT, relief="flat", bg=C["accent"], fg=C["accent_fg"],
+                  activebackground=C["accent"], activeforeground=C["accent_fg"], cursor="hand2",
+                  command=self.hide_update_banner).pack(side="right")
+        tk.Button(banner, text=t("update.download"), font=TITLE_FONT, relief="flat", bg=C["card"], fg=C["text"],
+                  activebackground=C["card"], activeforeground=C["text"], cursor="hand2", padx=12,
+                  command=lambda: winapi.open_in_shell(info.download_url)).pack(side="right", padx=(0, 12))
+        self.update_banner = banner
+
+    def hide_update_banner(self) -> None:
+        if self.update_banner is not None:
+            self.update_banner.destroy()
+            self.update_banner = None
+        self.update_info = None
 
     def show_about(self) -> None:
         messagebox.showinfo(t("menu.about"), t("about.text", version=__version__), parent=self.root)
