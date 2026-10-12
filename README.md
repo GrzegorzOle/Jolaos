@@ -34,7 +34,13 @@ W środowiskach zarządzanych, administrator ma przynajmniej zasady grupy i Intu
 Jolaos jest zwykłym programem z oknem, nie skryptem. Nie trzeba znać PowerShella ani rejestru. Okno ma trzy zakładki:
 
 1. **Audyt.** Niczego nie zmienia. Pokazuje, w których miejscach Copilot jest obecny na tym komputerze, i wyświetla ostatni raport strażnika.
+
+   ![Zakładka Audyt](docs/audyt.png)
+
 2. **Wyłączenie.** Lista głów hydry. Każda ma przełącznik i opis napisany dla osoby, która nie jest informatykiem. Zaznaczasz, co ma zostać ścięte, i klikasz „Zastosuj zaznaczone”.
+
+   ![Zakładka Wyłączenie](docs/wylaczenie.png)
+
 3. **Przywrócenie.** Lista tego, co Jolaos faktycznie zmienił. Każdą zmianę da się cofnąć osobno. Program pamięta stan sprzed zmiany i odtwarza dokładnie jego.
 
 Program jest domyślnie po polsku. W menu „Język” można przełączyć na angielski. Przełącznik w prawym górnym rogu zmienia motyw na ciemny, a menu „Pomoc” prowadzi do dziennika zmian i do treści licencji.
