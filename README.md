@@ -14,7 +14,7 @@ Z Copilotem jest podobnie. Odinstalować go potrafi każdy. Kłopot w tym, że p
 
 ## Dlaczego akurat Home
 
-W środowiskach zarządzanych, administrator ma przynajmniej zasady grupy i Intune. W wersji Home nie ma edytora zasad grupy, więc użytkownik zostaje z Ustawieniami i dobrą wolą Microsoftu. Jolaos zapisuje bezpośrednio w rejestrze to, co da się zapisać, a po każdej aktualizacji sprawdza, czy coś nie odrosło.
+W środowiskach zarządzanych administrator ma przynajmniej zasady grupy i Intune. W wersji Home nie ma edytora zasad grupy, więc użytkownik zostaje z Ustawieniami i dobrą wolą Microsoftu. Jolaos zapisuje bezpośrednio w rejestrze to, co da się zapisać, a po każdej aktualizacji sprawdza, czy coś nie odrosło.
 
 ## Bestiariusz
 
