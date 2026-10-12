@@ -6,7 +6,7 @@ Jolaos wyłącza Copilota w Windows 11 Home i pilnuje, żeby nie wrócił po kol
 
 ## Skąd nazwa
 
-W jednej z dyskusji o Copilocie padło porównanie do hydry. Administratorzy w firmach mają zasady grupy i Intune, a mimo to Copilot wyskakuje im w kolejnych miejscach jak nowe głowy. Trudno o trafniejszy opis.
+W jednej z dyskusji o Copilocie padło porównanie do hydry. Administratorzy w firmach mają zasady grupy i Intune, a mimo to Copilot wyskakuje im w kolejnych miejscach jak nowe głowy.
 
 Trudno o trafniejszy opis. Hydra lernejska miała tę przykrą właściwość, że w miejsce ściętej głowy wyrastały dwie. Herakles sam sobie z nią nie poradził. Dopiero jego bratanek Jolaos wpadł na to, żeby przypalać kikuty pochodnią, i głowy przestały odrastać.
 
