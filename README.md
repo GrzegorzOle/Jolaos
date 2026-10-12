@@ -55,7 +55,7 @@ Program jest domyślnie po polsku. W menu „Język” można przełączyć na a
 | Przycisk Copilota na pasku zadań | Wpis `ShowCopilotButton`, czyli to samo, co w Ustawieniach |
 | Klawisz Copilot na klawiaturze | Wyłączenie klawisza w mapie skankodów sterownika. Domyślnie niezaznaczone, wymaga restartu |
 | Copilot w Edge | Polityka przeglądarki `HubsSidebarEnabled`, którą Edge respektuje także w wersji Home |
-| Strażnik (pochodnia) | Zadanie w Harmonogramie zadań, uruchamiane po zalogowaniu. Sprawdza, czy ścięte głowy nie odrosły, i w razie potrzeby ścina je ponownie. Każde sprawdzenie zostawia raport |
+| Strażnik (pochodnia) | Zadanie w Harmonogramie zadań, uruchamiane po zalogowaniu. Sprawdza, czy ścięte głowy nie odrosły, i w razie potrzeby ścina je ponownie. Każde sprawdzenie zostawia raport, a gdy coś odrosło, pokazuje zwykłe powiadomienie Windows (do wyłączenia osobnym przełącznikiem) |
 
 Każda zmiana trafia do dziennika w `C:\ProgramData\Jolaos\journal.json` razem ze stanem sprzed zmiany. Tam też jest dziennik zdarzeń i raport strażnika.
 

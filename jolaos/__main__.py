@@ -36,7 +36,10 @@ def _cli_guard() -> int:
 def _cli_remove_guard() -> int:
     from .heads import GUARD_ID, heads_by_id
 
+    from . import notify
+
     journal = Journal()
+    notify.unregister()
     try:
         heads_by_id()[GUARD_ID].restore(journal)
     except Exception as exc:  # noqa: BLE001 - deinstalator nie ma gdzie tego pokazać

@@ -9,7 +9,10 @@ a = Analysis(
     [str(ROOT / "run_jolaos.py")],
     pathex=[str(ROOT)],
     binaries=[],
-    datas=[(str(ROOT / "build" / "jolaos.ico"), "build")],
+    datas=[
+        (str(ROOT / "build" / "jolaos.ico"), "build"),
+        (str(ROOT / "build" / "jolaos.png"), "build"),
+    ],
     hiddenimports=[],
     hookspath=[],
     runtime_hooks=[],

@@ -12,7 +12,7 @@ from tkinter import messagebox, ttk
 from tkinter.scrolledtext import ScrolledText
 from typing import Callable
 
-from . import __version__, i18n, winapi
+from . import __version__, i18n, notify, winapi
 from .guard import last_report
 from .heads import GUARD_ID, AuditResult, Head, HeadError, Status, build_heads
 from .i18n import t
@@ -247,7 +247,7 @@ class HeadRow(tk.Frame):
         self.bind("<Configure>", self._on_resize)
 
     def _on_resize(self, event) -> None:
-        width = max(event.width - 220, 200)
+        width = max(event.width - 270, 200)
         self.desc.configure(wraplength=width)
         self.notes.configure(wraplength=width)
         self.detail.configure(wraplength=width)
@@ -266,6 +266,22 @@ class HeadRow(tk.Frame):
     def set_enabled(self, enabled: bool) -> None:
         if self.switch:
             self.switch.set_enabled(enabled)
+
+
+class SettingRow(tk.Frame):
+    """Wiersz ustawienia: przełącznik działający od razu, bez przycisku Zastosuj."""
+
+    def __init__(self, master, title: str, description: str, initial: bool, command: Callable[[bool], None]) -> None:
+        super().__init__(master, bg=C["card"], padx=14, pady=10, highlightbackground=C["border"], highlightthickness=1)
+        self.var = tk.BooleanVar(value=initial)
+        self.columnconfigure(1, weight=1)
+        Switch(self, self.var).grid(row=0, column=0, rowspan=2, sticky="n", padx=(0, 14), pady=(2, 0))
+        tk.Label(self, text=title, font=TITLE_FONT, bg=C["card"], fg=C["text"], anchor="w").grid(row=0, column=1, sticky="w")
+        self.desc = tk.Label(self, text=description, font=BODY_FONT, bg=C["card"], fg=C["text"],
+                             justify="left", anchor="w", wraplength=520)
+        self.desc.grid(row=1, column=1, sticky="we", pady=(2, 0))
+        self.var.trace_add("write", lambda *_: command(self.var.get()))
+        self.bind("<Configure>", lambda e: self.desc.configure(wraplength=max(e.width - 270, 200)))
 
 
 # ---------------------------------------------------------------------------
@@ -422,6 +438,13 @@ class App:
             row = HeadRow(scroll.inner, head, with_switch=True, initial=head.default_on)
             row.pack(fill="x", padx=4, pady=3)
             self.disable_rows[head.id] = row
+        SettingRow(
+            scroll.inner,
+            t("setting.notify.title"),
+            t("setting.notify.desc"),
+            bool(self.journal.get_config(notify.CONFIG_KEY, True)),
+            lambda on: self.journal.set_config(notify.CONFIG_KEY, on),
+        ).pack(fill="x", padx=4, pady=3)
         bar = ttk.Frame(self.tab_disable)
         bar.pack(fill="x", padx=4, pady=8)
         self.btn_apply = ttk.Button(bar, text=t("disable.run"), style="Accent.TButton", command=self.start_apply)

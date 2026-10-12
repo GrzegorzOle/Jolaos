@@ -32,7 +32,7 @@ Dokument ma dwie części. Pierwsza jest dla osoby, która chce zainstalować Jo
 ### Co się dzieje po instalacji
 
 - Dziennik zmian, dziennik zdarzeń i raporty strażnika leżą w `C:\ProgramData\Jolaos`. Menu „Pomoc” ma skrót do tego folderu.
-- Jeśli włączysz strażnika, w Harmonogramie zadań pojawi się zadanie `Jolaos`. Uruchamia się minutę po zalogowaniu, sprawdza, czy ścięte głowy nie odrosły, i w razie potrzeby ścina je ponownie. Wynik każdego sprawdzenia widać w zakładce Audyt.
+- Jeśli włączysz strażnika, w Harmonogramie zadań pojawi się zadanie `Jolaos`. Uruchamia się minutę po zalogowaniu, sprawdza, czy ścięte głowy nie odrosły, i w razie potrzeby ścina je ponownie. Wynik każdego sprawdzenia widać w zakładce Audyt. Gdy coś odrosło, strażnik pokazuje też zwykłe powiadomienie Windows; gdy wszystko jest w porządku, milczy. Powiadomienia wyłącza przełącznik na dole zakładki Wyłączenie.
 - Program nie łączy się z internetem. Jedyny wyjątek to przywracanie aplikacji ze sklepu, które otwiera Microsoft Store.
 
 ### Cofanie zmian

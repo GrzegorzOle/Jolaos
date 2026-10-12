@@ -95,6 +95,16 @@ _PL = {
     "note.store": "Przywrócenie otworzy stronę aplikacji w sklepie Microsoft Store, skąd zainstalujesz ją ponownie.",
     "note.hklm": "Dotyczy wszystkich użytkowników tego komputera.",
     "note.hkcu": "Dotyczy tylko bieżącego konta użytkownika.",
+    # Powiadomienia
+    "notify.title": "Jolaos: hydra próbowała",
+    "notify.regrown": "Odrosło i ścięto ponownie: {heads}.",
+    "notify.failed": "Nie udało się ściąć ponownie: {heads}. Otwórz Jolaosa i sprawdź Audyt.",
+    "setting.notify.title": "Powiadomienie, gdy strażnik coś zetnie",
+    "setting.notify.desc": (
+        "Gdy po aktualizacji któraś głowa odrośnie, strażnik ścina ją po cichu i pokazuje "
+        "zwykłe powiadomienie Windows. Jeśli wszystko jest w porządku, nie pokazuje nic. "
+        "Ten przełącznik działa od razu, bez klikania „Zastosuj”."
+    ),
     # CLI
     "cli.audit_header": "Jolaos, audyt",
     "cli.guard_header": "Jolaos, raport strażnika",
@@ -190,6 +200,15 @@ _EN = {
     "note.store": "Restoring opens the app page in Microsoft Store, where you can install it again.",
     "note.hklm": "Applies to all users of this computer.",
     "note.hkcu": "Applies to the current user account only.",
+    "notify.title": "Jolaos: the Hydra tried",
+    "notify.regrown": "Grew back and was cut off again: {heads}.",
+    "notify.failed": "Could not cut off again: {heads}. Open Jolaos and check the Audit tab.",
+    "setting.notify.title": "Notification when the guard cuts something off",
+    "setting.notify.desc": (
+        "When a head grows back after an update, the guard cuts it off silently and shows "
+        "a regular Windows notification. If everything is fine, it shows nothing. "
+        "This switch takes effect immediately, without clicking Apply."
+    ),
     "cli.audit_header": "Jolaos, audit",
     "cli.guard_header": "Jolaos, guard report",
     "cli.guard_regrown": "grew back, cut off again",

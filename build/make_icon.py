@@ -89,6 +89,10 @@ def main() -> None:
     out = Path(__file__).with_name("jolaos.ico")
     out.write_bytes(ico([(s, render(s)) for s in SIZES]))
     print(out)
+    # PNG dla centrum powiadomień (Windows nie czyta tam .ico)
+    png_out = Path(__file__).with_name("jolaos.png")
+    png_out.write_bytes(render(64))
+    print(png_out)
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ import struct
 from dataclasses import dataclass, field
 from enum import Enum
 
-from . import winapi
+from . import notify, winapi
 from .i18n import head_text, t
 from .journal import Journal
 from .winapi import RegValue
@@ -265,6 +265,7 @@ class GuardHead(Head):
 
     def apply(self, journal: Journal) -> None:
         journal.record(self.id, None)
+        notify.register()
         command = f"{winapi.program_path()} --guard"
         result = winapi.run_cmd(
             [
