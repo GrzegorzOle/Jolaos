@@ -61,11 +61,15 @@ Każda zmiana trafia do dziennika w `C:\ProgramData\Jolaos\journal.json` razem z
 
 ## Instalacja
 
-1. Pobierz `Jolaos-Setup-<wersja>.exe` z sekcji Releases.
+1. Pobierz `Jolaos-Setup-<wersja>.exe` z sekcji [Releases](https://github.com/GrzegorzOle/Jolaos/releases).
 2. Uruchom instalator. Zapyta o uprawnienia administratora i utworzy skrót na pulpicie.
 3. Uruchom Jolaosa ze skrótu. Zacznij od zakładki Audyt.
 
+Instalator i program są podpisane certyfikatem code signing wystawionym przez Certum na „Open Source Developer Grzegorz Robert Oleksy”. Windows pokaże tę nazwę w oknie kontroli konta użytkownika. Jeśli widzisz „Nieznany wydawca”, nie uruchamiaj pliku. Obok instalatora leży plik `.sha256` z sumą kontrolną.
+
 Odinstalowanie przez „Aplikacje zainstalowane” usuwa program i zadanie strażnika. Wprowadzonych zmian nie cofa. Jeśli chcesz je cofnąć, zrób to wcześniej w zakładce Przywrócenie.
+
+Szczegóły, w tym instalację cichą i wdrożenie na kilku komputerach, opisuje [instrukcja wdrożenia](docs/WDROZENIE.md).
 
 ## Czego Jolaos nie zrobi
 
@@ -94,7 +98,7 @@ pip install -r requirements-dev.txt
 powershell -ExecutionPolicy Bypass -File build\build.ps1
 ```
 
-Skrypt generuje ikonę, uruchamia testy, buduje `dist\Jolaos\Jolaos.exe` PyInstallerem i pakuje go do `dist\Jolaos-Setup-<wersja>.exe`.
+Skrypt generuje ikonę, uruchamia testy, buduje `dist\Jolaos\Jolaos.exe` PyInstallerem, pakuje go do `dist\Jolaos-Setup-<wersja>.exe` i zapisuje sumę SHA-256. Z przełącznikiem `-Sign -Thumbprint <odcisk>` podpisuje program, deinstalator i instalator przez signtool. Jak wygląda wydanie wersji, opisuje [instrukcja wdrożenia](docs/WDROZENIE.md).
 
 Bez budowania program uruchomisz poleceniem `python -m jolaos`. Opcja `--audit` wypisuje stan w konsoli, `--guard` wykonuje jedno sprawdzenie strażnika.
 

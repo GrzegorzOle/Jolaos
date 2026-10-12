@@ -1,4 +1,5 @@
 ; Instalator Jolaosa. Kompilacja: ISCC.exe build\installer.iss /DAppVersion=0.1.0
+; Z podpisem: build\build.ps1 -Sign (dodaje /DSign i /Ssigntool=...).
 ; Oczekuje gotowego katalogu dist\Jolaos\ z PyInstallera.
 
 #ifndef AppVersion
@@ -33,6 +34,13 @@ WizardStyle=modern
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 ShowLanguageDialog=auto
+#ifdef Sign
+; Polecenie "signtool" przekazuje build.ps1 przez /Ssigntool=...; $f to podpisywany plik.
+SignTool=signtool $f
+SignedUninstaller=yes
+SignToolRetryCount=3
+SignToolMinimumTimeBetween=1000
+#endif
 
 [Languages]
 Name: "polish"; MessagesFile: "compiler:Languages\Polish.isl"
