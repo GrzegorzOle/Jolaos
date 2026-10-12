@@ -79,6 +79,7 @@ Nieśmiertelnej głowy Herakles nie zabił. Przywalił ją kamieniem i poszedł 
 - Nie gwarantuje, że następna wersja Windows nie przyniesie Copilota w nowym miejscu. Gwarantuje, że to zauważy.
 - Nie zastępuje zasad grupy ani Intune w firmie. Jeśli zarządzasz flotą komputerów, użyj narzędzi do tego przeznaczonych.
 - Nie potrafi ponownie zainstalować usuniętej aplikacji ze sklepu. Przy przywracaniu otwiera jej stronę w Microsoft Store, resztę robisz sam.
+- Nie sprawdza, czy Windows honoruje wpis w rejestrze. Zielony napis „Ustawiono w rejestrze” znaczy dokładnie tyle, ile mówi. Czy przycisk zniknął z paska zadań, widzisz sam na pasku zadań. Tylko przy aplikacjach ze sklepu i strażniku program sprawdza faktyczny stan.
 
 ## Zanim uruchomisz
 

@@ -30,9 +30,10 @@ _PL = {
     "tab.restore": "Przywrócenie",
     "audit.intro": (
         "Tu niczego nie zmieniamy. Program tylko sprawdza, w których miejscach Copilot "
-        "jest obecny na tym komputerze. Od tego warto zacząć. Napis po prawej opisuje "
-        "stan w systemie: zielony oznacza, że jest tak, jak chcemy, czerwony, że hydra "
-        "ma tu głowę."
+        "jest obecny na tym komputerze. Od tego warto zacząć. Napis po prawej mówi, co "
+        "program faktycznie sprawdził: zielony oznacza stan, jakiego chcemy, czerwony, że "
+        "hydra ma tu głowę. Przy wpisach w rejestrze sprawdzany jest sam wpis, nie to, czy "
+        "Windows go honoruje."
     ),
     "audit.run": "Sprawdź teraz",
     "audit.running": "Sprawdzanie…",
@@ -40,9 +41,10 @@ _PL = {
     "audit.no_report": "Strażnik nie zostawił jeszcze żadnego raportu.",
     "disable.intro": (
         "Przełącznik po lewej mówi, co ma zostać ścięte po kliknięciu „Zastosuj”. Napis "
-        "po prawej pokazuje, jak jest teraz w systemie: zielony oznacza stan pożądany, "
-        "czerwony, że głowa wciąż jest. Każda zmiana trafia do dziennika i da się ją "
-        "cofnąć w zakładce Przywrócenie."
+        "po prawej mówi, co program faktycznie sprawdził: zielony oznacza stan pożądany, "
+        "czerwony, że głowa wciąż jest. Przy wpisach w rejestrze sprawdzany jest sam wpis, "
+        "nie jego skutek. Każda zmiana trafia do dziennika i da się ją cofnąć w zakładce "
+        "Przywrócenie."
     ),
     "disable.run": "Zastosuj zaznaczone",
     "disable.running": "Wprowadzanie zmian…",
@@ -71,6 +73,11 @@ _PL = {
     "status.error": "Nie udało się sprawdzić",
     "status.guard_missing": "Strażnik nie działa",
     "status.guard_active": "Strażnik czuwa",
+    "status.reg_present": "Brak wpisu w rejestrze",
+    "status.reg_absent": "Ustawiono w rejestrze",
+    "status.reg_partial": "Wpis w rejestrze niepełny",
+    "status.app_present": "Aplikacja zainstalowana",
+    "status.app_absent": "Aplikacja usunięta",
     "status.ready": "Gotowy.",
     "status.need_restart": "Niektóre zmiany zadziałają dopiero po ponownym uruchomieniu komputera.",
     "status.need_relogin": "Niektóre zmiany zobaczysz po ponownym zalogowaniu lub restarcie Eksploratora.",
@@ -145,9 +152,10 @@ _EN = {
     "tab.restore": "Restore",
     "audit.intro": (
         "Nothing is changed here. The program only checks where Copilot is present on "
-        "this computer. This is the place to start. The label on the right describes the "
-        "current state of the system: green means it is the way we want it, red means "
-        "the Hydra still has a head here."
+        "this computer. This is the place to start. The label on the right says what the "
+        "program actually checked: green is the state we want, red means the Hydra still "
+        "has a head here. For registry entries only the entry itself is checked, not "
+        "whether Windows honours it."
     ),
     "audit.run": "Check now",
     "audit.running": "Checking…",
@@ -155,9 +163,10 @@ _EN = {
     "audit.no_report": "The guard has not left a report yet.",
     "disable.intro": (
         "The switch on the left says what will be cut off when you click Apply. The label "
-        "on the right shows the current state of the system: green is the desired state, "
-        "red means the head is still there. Every change is written to a journal and can "
-        "be undone on the Restore tab."
+        "on the right says what the program actually checked: green is the desired state, "
+        "red means the head is still there. For registry entries only the entry itself is "
+        "checked, not its effect. Every change is written to a journal and can be undone "
+        "on the Restore tab."
     ),
     "disable.run": "Apply selected",
     "disable.running": "Applying changes…",
@@ -185,6 +194,11 @@ _EN = {
     "status.error": "Could not check",
     "status.guard_missing": "Guard not running",
     "status.guard_active": "Guard is watching",
+    "status.reg_present": "No registry entry",
+    "status.reg_absent": "Set in the registry",
+    "status.reg_partial": "Registry entry incomplete",
+    "status.app_present": "App installed",
+    "status.app_absent": "App removed",
     "status.ready": "Ready.",
     "status.need_restart": "Some changes take effect after a restart of the computer.",
     "status.need_relogin": "Some changes appear after signing in again or restarting Explorer.",

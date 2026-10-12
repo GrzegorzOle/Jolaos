@@ -71,9 +71,21 @@ class Head:
 # Głowy oparte na rejestrze
 
 
+REGISTRY_LABELS = {
+    Status.PRESENT: "status.reg_present",
+    Status.ABSENT: "status.reg_absent",
+    Status.PARTIAL: "status.reg_partial",
+}
+APP_LABELS = {
+    Status.PRESENT: "status.app_present",
+    Status.ABSENT: "status.app_absent",
+}
+
+
 @dataclass
 class RegistryHead(Head):
     values: tuple[RegValue, ...] = ()
+    status_labels: dict[Status, str] = field(default_factory=lambda: dict(REGISTRY_LABELS))
 
     def audit(self) -> AuditResult:
         matched = 0
@@ -129,6 +141,7 @@ class RegistryHead(Head):
 class AppxHead(Head):
     package_names: tuple[str, ...] = ()
     store_id: str = ""
+    status_labels: dict[Status, str] = field(default_factory=lambda: dict(APP_LABELS))
 
     def _query(self) -> tuple[list[dict], list[dict]]:
         names = ", ".join(f"'{n}'" for n in self.package_names)
@@ -221,6 +234,8 @@ def build_scancode_map(entries: list[tuple[int, int]]) -> bytes:
 
 @dataclass
 class CopilotKeyHead(Head):
+    status_labels: dict[Status, str] = field(default_factory=lambda: dict(REGISTRY_LABELS))
+
     def _current(self) -> tuple[bytes | None, list[tuple[int, int]]]:
         current = winapi.read_value("HKLM", SCANCODE_PATH, SCANCODE_NAME)
         raw = bytes.fromhex(current["data"]) if current and current["kind"] == "binary" else None
