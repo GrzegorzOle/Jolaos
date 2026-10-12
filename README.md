@@ -51,7 +51,7 @@ Program jest domyślnie po polsku. W menu „Język” można przełączyć na a
 |---|---|
 | Aplikacja Copilot | Odinstalowuje pakiet dla wszystkich użytkowników i usuwa go z obrazu systemu, żeby nie instalował się nowym kontom |
 | Aplikacja Microsoft 365 Copilot | Jak wyżej. Domyślnie niezaznaczona, bo ten program służy też do otwierania dokumentów Office w przeglądarce |
-| Polityka „Wyłącz Windows Copilot” | Wpis `TurnOffWindowsCopilot` w rejestrze, dla bieżącego konta i dla całego komputera |
+| Polityka „Wyłącz Windows Copilot” | Wpis `TurnOffWindowsCopilot` w rejestrze, dla bieżącego konta i dla całego komputera. Odkąd Copilot jest osobną aplikacją, Microsoft uznaje tę politykę za przestarzałą: na nowych kompilacjach może nie mieć skutku, na starszych nadal działa. Zostaje, bo nic nie kosztuje |
 | Przycisk Copilota na pasku zadań | Wpis `ShowCopilotButton`, czyli to samo, co w Ustawieniach |
 | Klawisz Copilot na klawiaturze | Wyłączenie klawisza w mapie skankodów sterownika. Domyślnie niezaznaczone, wymaga restartu |
 | Copilot w Edge | Polityka przeglądarki `HubsSidebarEnabled`, którą Edge respektuje także w wersji Home |

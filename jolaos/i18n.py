@@ -268,9 +268,11 @@ _HEADS_PL = {
     "copilot_policy": {
         "title": "Polityka „Wyłącz Windows Copilot”",
         "desc": (
-            "Wpis w rejestrze, którym firmy wyłączają Copilota w całym systemie. "
-            "W wersji Home nie ma do niego okienka, ale system go czyta. Zapisujemy go "
-            "dla bieżącego konta i dla całego komputera."
+            "Wpis TurnOffWindowsCopilot, którym firmy wyłączały pierwszego Copilota "
+            "wbudowanego w pasek zadań. Odkąd Copilot jest osobną aplikacją ze sklepu, "
+            "Microsoft uznaje tę politykę za przestarzałą i nowe kompilacje Windows mogą "
+            "ją ignorować. Jolaos zapisuje ją mimo to, bo na starszych kompilacjach nadal "
+            "działa, a niczego nie psuje. Aplikację usuwa osobna pozycja wyżej."
         ),
         "restore": "Usuwa wpisy polityki z rejestru (albo przywraca poprzednie, jeśli były).",
     },
@@ -331,9 +333,11 @@ _HEADS_EN = {
     "copilot_policy": {
         "title": "\"Turn off Windows Copilot\" policy",
         "desc": (
-            "The registry entry companies use to turn Copilot off system-wide. Home "
-            "edition has no settings page for it, but the system still reads it. It is "
-            "written for the current account and for the whole computer."
+            "The TurnOffWindowsCopilot entry companies used to turn off the first Copilot "
+            "built into the taskbar. Since Copilot became a separate Store app, Microsoft "
+            "treats this policy as deprecated and newer Windows builds may ignore it. "
+            "Jolaos still writes it because older builds honour it and it breaks nothing. "
+            "The app itself is removed by the separate item above."
         ),
         "restore": "Removes the policy entries from the registry (or restores previous ones if present).",
     },
