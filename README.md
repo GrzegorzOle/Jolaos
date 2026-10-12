@@ -29,34 +29,37 @@ W środowiskach zarządzanych, administrator ma przynajmniej zasady grupy i Intu
 | Nieśmiertelna głowa pod kamieniem | To, czego nie da się usunąć, a jedynie ukryć (lista niżej) |
 | Eurysteusz | Microsoft, który tej pracy nie uzna i nie udzieli na nią wsparcia |
 
+## Jak to wygląda
+
+Jolaos jest zwykłym programem z oknem, nie skryptem. Nie trzeba znać PowerShella ani rejestru. Okno ma trzy zakładki:
+
+1. **Audyt.** Niczego nie zmienia. Pokazuje, w których miejscach Copilot jest obecny na tym komputerze, i wyświetla ostatni raport strażnika.
+2. **Wyłączenie.** Lista głów hydry. Każda ma przełącznik i opis napisany dla osoby, która nie jest informatykiem. Zaznaczasz, co ma zostać ścięte, i klikasz „Zastosuj zaznaczone”.
+3. **Przywrócenie.** Lista tego, co Jolaos faktycznie zmienił. Każdą zmianę da się cofnąć osobno. Program pamięta stan sprzed zmiany i odtwarza dokładnie jego.
+
+Program jest domyślnie po polsku. W menu „Język” można przełączyć na angielski. Przełącznik w prawym górnym rogu zmienia motyw na ciemny, a menu „Pomoc” prowadzi do dziennika zmian i do treści licencji.
+
 ## Co robi
 
-<!-- Dopasuj tę listę do faktycznej implementacji przed publikacją. -->
+| Głowa | Jak Jolaos ją ścina |
+|---|---|
+| Aplikacja Copilot | Odinstalowuje pakiet dla wszystkich użytkowników i usuwa go z obrazu systemu, żeby nie instalował się nowym kontom |
+| Aplikacja Microsoft 365 Copilot | Jak wyżej. Domyślnie niezaznaczona, bo ten program służy też do otwierania dokumentów Office w przeglądarce |
+| Polityka „Wyłącz Windows Copilot” | Wpis `TurnOffWindowsCopilot` w rejestrze, dla bieżącego konta i dla całego komputera |
+| Przycisk Copilota na pasku zadań | Wpis `ShowCopilotButton`, czyli to samo, co w Ustawieniach |
+| Klawisz Copilot na klawiaturze | Wyłączenie klawisza w mapie skankodów sterownika. Domyślnie niezaznaczone, wymaga restartu |
+| Copilot w Edge | Polityka przeglądarki `HubsSidebarEnabled`, którą Edge respektuje także w wersji Home |
+| Strażnik (pochodnia) | Zadanie w Harmonogramie zadań, uruchamiane po zalogowaniu. Sprawdza, czy ścięte głowy nie odrosły, i w razie potrzeby ścina je ponownie. Każde sprawdzenie zostawia raport |
 
-- **Tryb audytu.** Pokazuje, gdzie Copilot jest obecny, i niczego nie zmienia. Od tego warto zacząć.
-- **Usuwa aplikację Copilot** dla istniejących użytkowników oraz z obrazu systemu, żeby nie instalowała się nowym kontom.
-- **Ustawia polityki w rejestrze** tam, gdzie wersja Home je respektuje.
-- **Ukrywa przycisk Copilota** na pasku zadań i opcjonalnie przypisuje klawiszowi Copilot inną funkcję.
-- **Wyłącza Copilota w Edge** przez polityki przeglądarki.
-- **Przypala kikuty.** Zakłada zadanie, które po aktualizacji systemu sprawdza, czy coś nie odrosło, i zapisuje raport.
-- **Przywracanie.** Każda zmiana jest zapisywana, więc da się ją cofnąć jednym poleceniem.
+Każda zmiana trafia do dziennika w `C:\ProgramData\Jolaos\journal.json` razem ze stanem sprzed zmiany. Tam też jest dziennik zdarzeń i raport strażnika.
 
-## Użycie
+## Instalacja
 
-<!-- Nazwy parametrów są przykładowe. -->
+1. Pobierz `Jolaos-Setup-<wersja>.exe` z sekcji Releases.
+2. Uruchom instalator. Zapyta o uprawnienia administratora i utworzy skrót na pulpicie.
+3. Uruchom Jolaosa ze skrótu. Zacznij od zakładki Audyt.
 
-```powershell
-# Najpierw zobacz, z czym walczysz
-.\jolaos.ps1 -Audit
-
-# Zetnij i przypal
-.\jolaos.ps1 -Apply
-
-# Gdyby jednak hydra była ci potrzebna
-.\jolaos.ps1 -Restore
-```
-
-Wymaga uruchomienia jako administrator.
+Odinstalowanie przez „Aplikacje zainstalowane” usuwa program i zadanie strażnika. Wprowadzonych zmian nie cofa. Jeśli chcesz je cofnąć, zrób to wcześniej w zakładce Przywrócenie.
 
 ## Czego Jolaos nie zrobi
 
@@ -65,6 +68,7 @@ Nieśmiertelnej głowy Herakles nie zabił. Przywalił ją kamieniem i poszedł 
 - Nie usuwa składników wbudowanych w system tak, że ich usunięcie grozi awarią. Te tylko ukrywa.
 - Nie gwarantuje, że następna wersja Windows nie przyniesie Copilota w nowym miejscu. Gwarantuje, że to zauważy.
 - Nie zastępuje zasad grupy ani Intune w firmie. Jeśli zarządzasz flotą komputerów, użyj narzędzi do tego przeznaczonych.
+- Nie potrafi ponownie zainstalować usuniętej aplikacji ze sklepu. Przy przywracaniu otwiera jej stronę w Microsoft Store, resztę robisz sam.
 
 ## Zanim uruchomisz
 
@@ -75,11 +79,28 @@ Eurysteusz już zapowiedział, że tej pracy nie zaliczy.
 - Uruchamiasz na własną odpowiedzialność. Zacznij od trybu audytu i utwórz punkt przywracania systemu.
 - Niektóre programy antywirusowe oznaczają narzędzia tego typu jako potencjalnie niechciane. Przeczytaj kod, zanim mu zaufasz.
 
+## Budowanie ze źródeł
+
+Potrzebne: Python 3.11 lub nowszy, [Inno Setup 6](https://jrsoftware.org/isinfo.php) oraz pakiety z `requirements-dev.txt`.
+
+```powershell
+pip install -r requirements-dev.txt
+powershell -ExecutionPolicy Bypass -File build\build.ps1
+```
+
+Skrypt generuje ikonę, uruchamia testy, buduje `dist\Jolaos\Jolaos.exe` PyInstallerem i pakuje go do `dist\Jolaos-Setup-<wersja>.exe`.
+
+Bez budowania program uruchomisz poleceniem `python -m jolaos`. Opcja `--audit` wypisuje stan w konsoli, `--guard` wykonuje jedno sprawdzenie strażnika.
+
+Program nie ma zależności poza biblioteką standardową Pythona. Okno jest zrobione w tkinter, zmiany w rejestrze przez `winreg`, aplikacje ze sklepu przez PowerShell.
+
 ## Zasada dla współtwórców
 
 Herakles zanurzył strzały we krwi hydry. Były przez to zabójcze, a po latach ta sama trucizna zabiła jego samego.
 
 Nie dopisuj do Jolaosa niczego „przy okazji”. Każdy wyłączony składnik, którego działania nie rozumiesz, wróci kiedyś w postaci zepsutej aktualizacji. Jedna hydra, jedna pochodnia.
+
+Nowa głowa to jeden wpis w `jolaos/heads.py` plus tytuł, opis i opis przywracania w `jolaos/i18n.py`, po polsku i po angielsku. Opis ma być zrozumiały dla osoby, która nigdy nie otwierała rejestru.
 
 ## Podziękowania
 
