@@ -7,7 +7,7 @@ Dokument ma dwie części. Pierwsza jest dla osoby, która chce zainstalować Jo
 ### Wymagania
 
 - Windows 11 (projekt powstał z myślą o wersji Home, działa też na Pro).
-- Konto z uprawnieniami administratora. Instalator i program proszą o podniesienie uprawnień.
+- Konto z uprawnieniami administratora. Instalator i program za każdym razem proszą o podniesienie uprawnień przez systemowe okno kontroli konta użytkownika. Bez zgody program się nie uruchomi, także w trybie audytu. Powód: zmiany w rejestrze dla całego komputera, usuwanie aplikacji i zadanie w harmonogramie wymagają tych uprawnień. Na koncie standardowym Windows poprosi o hasło administratora.
 - Około 40 MB miejsca na dysku.
 
 ### Krok po kroku
@@ -24,7 +24,7 @@ Dokument ma dwie części. Pierwsza jest dla osoby, która chce zainstalować Jo
 
 4. Utwórz punkt przywracania systemu. Start, wpisz „Utwórz punkt przywracania”, przycisk „Utwórz…”.
 5. Uruchom instalator. Windows pokaże okno kontroli konta użytkownika z nazwą wydawcy, potwierdź. Instalator kopiuje program do `C:\Program Files\Jolaos`, dodaje skrót na pulpicie i w menu Start.
-6. Uruchom Jolaosa ze skrótu. Program ponownie poprosi o uprawnienia administratora.
+6. Uruchom Jolaosa ze skrótu. Program ponownie poprosi o uprawnienia administratora. To jedyne pytanie, jakie zadaje przed otwarciem okna, i pojawia się przy każdym uruchomieniu.
 7. Zacznij od zakładki **Audyt**. Program sam sprawdza stan przy starcie. Czerwona kropka oznacza, że dany element Copilota jest obecny, zielona, że jest wyłączony.
 8. Przejdź do zakładki **Wyłączenie**, przeczytaj opisy, zostaw włączone tylko te przełączniki, które rozumiesz, i kliknij „Zastosuj zaznaczone”. Program zapyta o potwierdzenie.
 9. Jeśli pasek stanu u dołu prosi o ponowne uruchomienie komputera albo Eksploratora, zrób to.

@@ -31,7 +31,11 @@ W środowiskach zarządzanych, administrator ma przynajmniej zasady grupy i Intu
 
 ## Jak to wygląda
 
-Jolaos jest zwykłym programem z oknem, nie skryptem. Nie trzeba znać PowerShella ani rejestru. Okno ma trzy zakładki:
+Jolaos jest zwykłym programem z oknem, nie skryptem. Nie trzeba znać PowerShella ani rejestru.
+
+**Program wymaga uprawnień administratora.** Przy każdym uruchomieniu Windows pokazuje pytanie o zgodę (okno kontroli konta użytkownika), bo Jolaos zmienia rejestr dla całego komputera, usuwa aplikacje i zakłada zadanie w harmonogramie. Bez tej zgody program się nie uruchomi. Dotyczy to także trybu audytu, który niczego nie zmienia, ale czyta te same miejsca.
+
+Okno ma trzy zakładki:
 
 1. **Audyt.** Niczego nie zmienia. Pokazuje, w których miejscach Copilot jest obecny na tym komputerze, i wyświetla ostatni raport strażnika.
 
@@ -63,7 +67,7 @@ Każda zmiana trafia do dziennika w `C:\ProgramData\Jolaos\journal.json` razem z
 
 1. Pobierz `Jolaos-Setup-<wersja>.exe` z sekcji [Releases](https://github.com/GrzegorzOle/Jolaos/releases).
 2. Uruchom instalator. Zapyta o uprawnienia administratora i utworzy skrót na pulpicie.
-3. Uruchom Jolaosa ze skrótu. Zacznij od zakładki Audyt.
+3. Uruchom Jolaosa ze skrótu. Program poprosi o uprawnienia administratora, bez nich nie wystartuje. Zacznij od zakładki Audyt.
 
 Instalator i program są podpisane certyfikatem code signing wystawionym przez Certum na „Open Source Developer Grzegorz Robert Oleksy”. Windows pokaże tę nazwę w oknie kontroli konta użytkownika. Jeśli widzisz „Nieznany wydawca”, nie uruchamiaj pliku. Obok instalatora leży plik `.sha256` z sumą kontrolną.
 
@@ -87,6 +91,7 @@ Eurysteusz już zapowiedział, że tej pracy nie zaliczy.
 
 - Projekt nie jest powiązany z firmą Microsoft. Windows, Copilot i Microsoft Edge są znakami towarowymi Microsoft Corporation.
 - Microsoft nie wspiera takich zmian. Aktualizacja może je odwrócić albo coś zepsuć.
+- Program działa z uprawnieniami administratora, więc ma dostęp do całego systemu. Uruchamiaj tylko plik pobrany ze strony projektu i sprawdź podpis.
 - Uruchamiasz na własną odpowiedzialność. Zacznij od trybu audytu i utwórz punkt przywracania systemu.
 - Niektóre programy antywirusowe oznaczają narzędzia tego typu jako potencjalnie niechciane. Przeczytaj kod, zanim mu zaufasz.
 

@@ -46,6 +46,10 @@ SignToolMinimumTimeBetween=1000
 Name: "polish"; MessagesFile: "compiler:Languages\Polish.isl"
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
+[Messages]
+polish.WelcomeLabel2=Instalator zainstaluje [name/ver] na tym komputerze.%n%nJolaos wymaga uprawnień administratora i prosi o nie przy każdym uruchomieniu, bo zmienia rejestr całego komputera, usuwa aplikacje i zakłada zadanie w harmonogramie.%n%nPrzed kontynuacją zalecane jest zamknięcie innych programów.
+english.WelcomeLabel2=Setup will install [name/ver] on this computer.%n%nJolaos requires administrator rights and asks for them at every start, because it changes machine-wide registry entries, removes apps and creates a scheduled task.%n%nIt is recommended that you close all other applications before continuing.
+
 [Files]
 Source: "..\dist\{#AppName}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
